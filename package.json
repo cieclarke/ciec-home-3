@@ -1,0 +1,26 @@
+{
+  "name": "cieclarke.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bluebird": "^3.5.3",
+    "gulp": "^4.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-ejs": "^3.3.0",
+    "gulp-rename": "^1.4.0",
+    "html-webpack-plugin": "^3.2.0",
+    "lodash": "^4.17.11",
+    "request-promise": "^4.2.2",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}

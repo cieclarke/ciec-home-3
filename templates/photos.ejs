@@ -1,0 +1,37 @@
+<html>
+    <head>
+    <title><%= config.title %> | Photos</title>
+    </head>
+    <body>
+        <% include navigation.ejs %>
+        <main>
+            <h1>In Development</h1>
+            <h2>Photos</h2>
+            <% if(images.length <= 0) { %>
+            <p>No public photos made available right now</p>
+            <% } else { %>
+            <ul>
+            <% for(var i=0; i < images.length; i++) { %>
+                <li>
+                    <h3><%= images[i].title %></h3>
+                    <a href="<%= images[i].sizes['Medium 640'].source %>"><img src="<%= images[i].sizes['Large Square'].source %>"></a>
+                    <dl>
+                        <dt>FocalLength</dt>
+                        <dd><%= images[i].exif.FocalLength %></dd>
+                        <dt>ISO</dt>
+                        <dd><%= images[i].exif.ISO %></dd>
+                        <dt>Exposure Time</dt>
+                        <dd><%= images[i].exif.ExposureTime %></dd>
+                        <dt>F</dt>
+                        <dd><%= images[i].exif.FNumber %></dd>
+                        <dt>LensModel</dt>
+                        <dd><%= images[i].exif.LensModel %></dd>
+                        
+                    </dl>
+                </li>
+             <% } %>
+             <% } %>
+            </ul>
+        </main>
+    <body>
+<html>
