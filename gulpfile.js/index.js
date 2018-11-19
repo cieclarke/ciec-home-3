@@ -1,6 +1,7 @@
 const ejs = require('gulp-ejs');
 const rename = require('gulp-rename');
 const clean = require('gulp-clean');
+const chmod = require('gulp-chmod');
 const gulp = require('gulp');
 const globalConfig = require('./../site-config/global.json');
 const flickr = require('./../lib/flickr');
@@ -13,6 +14,7 @@ gulp.task('photos.htm', () => {
                 images: photos
             }))
             .pipe(rename('photos.htm'))
+            .pipe(chmod(0o777))
             .pipe(gulp.dest('./dist'));
     })
     ]);
@@ -28,6 +30,7 @@ gulp.task('index.htm', () => {
         .pipe(ejs({
             config: globalConfig
         }))
+        .pipe(chmod(0o777))
         .pipe(rename('index.htm'))
         .pipe(gulp.dest('./dist'));
 });
