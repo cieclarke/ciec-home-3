@@ -3,6 +3,7 @@ const rename = require('gulp-rename');
 const clean = require('gulp-clean');
 const chmod = require('gulp-chmod');
 const gulp = require('gulp');
+const sass = require('gulp-sass');
 const globalConfig = require('./../site-config/global.json');
 const flickr = require('./../lib/flickr');
 
@@ -18,6 +19,12 @@ gulp.task('photos.htm', () => {
             .pipe(gulp.dest('./dist'));
     })
     ]);
+});
+
+gulp.task('css', () => {
+    return gulp.src('css/main.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('clean', () => {
@@ -40,6 +47,6 @@ gulp.task('deploy', () => {
         .pipe(gulp.dest('/'));
 });
 
-gulp.task('default', gulp.series('clean', gulp.parallel('index.htm', 'photos.htm')));
+gulp.task('default', gulp.series('clean', gulp.parallel('index.htm', 'photos.htm', 'css')));
 
 gulp.task('deploy', gulp.series('default'));

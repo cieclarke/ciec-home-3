@@ -1,0 +1,25 @@
+<script>
+
+var imgList = document.getElementsByTagName('img');
+
+for(var i=0; i<imgList.length; i++) {
+
+    var img = imgList[i];
+    var src = img.getAttribute('src');
+    var event = function(event) {
+        var href = event.srcElement.parentElement.getElementsByTagName('a')[0].getAttribute('href');
+        window.location.href = href;
+    }
+    img.parentElement.style.display = 'none';
+    img.parentElement.parentElement.style.backgroundImage = 'url(' + src + ')';
+    img.parentElement.parentElement.style.backgroundPositionX  = '0%';
+    img.parentElement.parentElement.style.backgroundPositionY  = '0%';
+    img.parentElement.parentElement.style.backgroundRepeat  = 'no-repeat';
+    img.parentElement.parentElement.getElementsByTagName('h3')[0].style.opacity  = '0.5';
+    img.parentElement.parentElement.getElementsByTagName('dl')[0].style.opacity  = '0.75';
+    img.parentElement.parentElement.addEventListener('click', event)
+}
+
+
+
+</script>

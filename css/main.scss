@@ -1,0 +1,115 @@
+@import "normalize";
+
+body {
+    background: #666;
+    font-family: "courier new";
+}
+
+h1 {
+    font-size: 3em;
+    margin: 0;
+    background-color: #333;
+    color: white;
+    padding-top:1rem;
+    padding-bottom: 1rem;
+}
+h2 {
+    font-size: 2em;
+    margin: 0;
+    background-color: #444;
+    color: white;
+    padding-top:1rem;
+    padding-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1em;
+    margin: 0;
+    background-color: #353535;
+    color: white;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+a, p {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+ul {
+    padding :0px;
+    margin:0px;
+}
+
+dl {
+    display: grid;
+    grid-template-columns: max-content auto;
+    background-color: #444;
+    margin:0px;
+    //float:left;
+  }
+  
+  dt {
+    grid-column-start: 1;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  dd {
+    grid-column-start: 2;
+    color: #ffffff;
+  }
+
+nav > div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  nav > div > div {
+    width: 6rem;
+    text-align: center;
+  }
+
+  nav a {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: block;
+  }
+
+  $colors-list: #111 #222 #333 #444 #555;
+
+  @each $current-color in $colors-list {
+    $i: index($colors-list, $current-color);
+    nav > div >  div:nth-child(#{$i}) > a {
+        background-color: $current-color;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    main > div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+    main > div > div {
+        flex-grow: 1;
+        flex: 1 1 50%;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+
+    main > div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      main > div > div {
+        flex-grow: 1;
+        flex: 1 1 30%;
+    }
+  }
