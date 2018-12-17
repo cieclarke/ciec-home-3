@@ -4,20 +4,37 @@ var imgList = document.getElementsByTagName('img');
 
 for(var i=0; i<imgList.length; i++) {
 
+    var touchmoved;
     var img = imgList[i];
     var src = img.getAttribute('src');
-    var event = function(event) {
-        var href = event.srcElement.parentElement.getElementsByTagName('a')[0].getAttribute('href');
-        window.location.href = href;
+    var goEvent = function(event) {
+        if(touchmoved != true){
+            var href = event.srcElement.parentElement.getElementsByTagName('a')[0].getAttribute('href');
+            window.location.href = href;
+        }
     }
+
+    var moveEvent = function(event) {
+        touchmoved = true; 
+    }
+
+    var startEvent = function(event) {
+        touchmoved = false;
+    }
+
     img.parentElement.style.display = 'none';
     img.parentElement.parentElement.style.backgroundImage = 'url(' + src + ')';
     img.parentElement.parentElement.style.backgroundPositionX  = '0%';
     img.parentElement.parentElement.style.backgroundPositionY  = '0%';
     img.parentElement.parentElement.style.backgroundRepeat  = 'no-repeat';
+    img.parentElement.parentElement.style.backgroundSize  = 'cover';
     img.parentElement.parentElement.getElementsByTagName('h3')[0].style.opacity  = '0.5';
     img.parentElement.parentElement.getElementsByTagName('dl')[0].style.opacity  = '0.75';
-    img.parentElement.parentElement.addEventListener('click', event)
+    img.parentElement.parentElement.addEventListener('click', goEvent);
+    img.parentElement.parentElement.addEventListener('touchend', goEvent);
+    img.parentElement.parentElement.addEventListener('touchmove', moveEvent);
+    img.parentElement.parentElement.addEventListener('touchstart', startEvent);
+
 }
 
 
