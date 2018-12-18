@@ -42,11 +42,31 @@ gulp.task('index.htm', () => {
         .pipe(gulp.dest('./dist'));
 });
 
+gulp.task('blog.htm', () => {
+    return gulp.src('./templates/blog.ejs')
+        .pipe(ejs({
+            config: globalConfig
+        }))
+        .pipe(chmod(0o777))
+        .pipe(rename('blog.htm'))
+        .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('work.htm', () => {
+    return gulp.src('./templates/work.ejs')
+        .pipe(ejs({
+            config: globalConfig
+        }))
+        .pipe(chmod(0o777))
+        .pipe(rename('work.htm'))
+        .pipe(gulp.dest('./dist'));
+});
+
 gulp.task('deploy', () => {
     return gulp.src('dist/*')
         .pipe(gulp.dest('/'));
 });
 
-gulp.task('default', gulp.series('clean', gulp.parallel('index.htm', 'photos.htm', 'css')));
+gulp.task('default', gulp.series('clean', gulp.parallel('index.htm', 'photos.htm', 'blog.htm', 'work.htm', 'css')));
 
 gulp.task('deploy', gulp.series('default'));
