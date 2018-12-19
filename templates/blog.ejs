@@ -6,13 +6,32 @@
     <link rel="stylesheet" href="main.css" />
     <body id="blog">
     <% include navigation.ejs %>
+    <main>
         <h1>Tumblr & links</h1>
-        <p>
-            Pdf Link
-        </p>
-        <p>
-            github link list
-        </p>
+        <% if(items.response.posts.length <= 0) { %>
+            <p>No public photos made available right now</p>
+        <% } else { %>
+        <div>
+        <% for(var i=0; i < items.response.posts.length; i++) { %>
+            <div>
+                <% switch(items.response.posts[i].type) { 
+                    case 'link':
+                %>
+                <%- include('blog.link.ejs', {post: items.response.posts[i]}) %>
+                <%
+                    break;
+                    default:                
+                %>
+                    <div>default</div>
+                <%
+                    break;
+                %>
+                <% } %>
+            </div>
+        <% } %>
+        </div>
+        <% } %>
+    </main>
     <body>
     <% include footer.ejs %>
 <html>

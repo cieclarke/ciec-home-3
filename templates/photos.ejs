@@ -4,7 +4,7 @@
     <title><%= config.title %> | Photos</title>
     <link rel="stylesheet" href="main.css" />
     </head>
-    <body id="photos">
+    <body>
         <% include navigation.ejs %>
         <main>
             <h1>Photos</h1>
@@ -14,13 +14,10 @@
             <div>
             <% for(var i=0; i < images.length; i++) { %>
                 <div>
-
-
                     <h3><%= images[i].title %></h3>
-                        <a href="<%= images[i].sizes['Large'].source %>">
-                            <img src="<%= images[i].sizes['Medium'].source %>" />
-                        </a>
-
+                    <a href="<%= images[i].sizes['Large'].source %>">
+                        <img src="<%= images[i].sizes['Medium'].source %>" />
+                    </a>
                     <dl>
                         <dt>Focal Length</dt>
                         <dd><%= images[i].exif.FocalLength %></dd>
@@ -32,7 +29,6 @@
                         <dd><%= images[i].exif.FNumber %></dd>
                         <dt>Lens Model</dt>
                         <dd><%= images[i].exif.LensModel %></dd>
-                        
                     </dl>
                 </div>
              <% } %>

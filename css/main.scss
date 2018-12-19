@@ -1,5 +1,8 @@
 @import "normalize";
 
+$colors-list: #111 #222 #333 #444;
+
+
 body {
     background: #666;
     font-family: "courier new";
@@ -83,7 +86,14 @@ nav > div {
     display: block;
   }
 
-  $colors-list: #111 #222 #333 #444;
+
+
+  @each $current-color in $colors-list {
+    $i: index($colors-list, $current-color);
+    nav > div >  div:nth-child(#{$i}) > a {
+        background-color: $current-color;
+    }
+  }
 
   #home h1 {
     background-color: nth($colors-list, 1);
@@ -101,25 +111,32 @@ nav > div {
     background-color: nth($colors-list, 4);
   }
 
+#blog main > div > div {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1rem solid nth($colors-list, 4);
+}
 
-  @each $current-color in $colors-list {
-    $i: index($colors-list, $current-color);
-    nav > div >  div:nth-child(#{$i}) > a {
-        background-color: $current-color;
-    }
+#blog main > div > div a {
+  font-size: 200%;
+  display: block;
+}
 
-    
+#work main a {
+  font-size: 200%;
+  display: block;
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 768px) {
-    main > div {
+    #photos main > div {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
       }
 
-    main > div > div {
+      #photos main > div > div {
         flex-grow: 1;
         flex: 1 1 100%;
     }
@@ -127,14 +144,14 @@ nav > div {
 
   @media screen and (min-width: 1024px) {
 
-    main > div {
+    #photos main > div {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
       }
 
-      main > div > div {
+      #photos main > div > div {
         flex-grow: 1;
         flex: 1 1 100%;
     }
