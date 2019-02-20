@@ -1,3 +1,4 @@
+const dotenv = require('dotenv');
 const ejs = require('gulp-ejs');
 const rename = require('gulp-rename');
 const clean = require('gulp-clean');
@@ -9,6 +10,10 @@ const globalConfig = require('./../site-config/global.json');
 const flickr = require('./../lib/flickr');
 const tumblr = require('./../lib/tumblr');
 const options = require('./../options.json');
+
+if (process.env.NODE_ENV !== 'production') {
+    dotenv.load();
+}
 
 gulp.task('clean', () => {
     return gulp.src('dist', { read: false, allowEmpty: true })
@@ -22,7 +27,7 @@ gulp.task('css', () => {
 });
 
 gulp.task('photos.htm', () => {
-    return Promise.all([flickr(options.flickr.api_key).done((photos) => {
+    return Promise.all([flickr(process.env.FLICKR_API).done((photos) => {
         return gulp.src('./templates/photos.ejs')
             .pipe(ejs({
                 config: globalConfig,
@@ -46,7 +51,7 @@ gulp.task('index.htm', () => {
 });
 
 gulp.task('blog.htm', () => {
-    return Promise.all([tumblr(options.tumblr.api_key).done((blogs) => {
+    return Promise.all([tumblr(process.env.TUMBLR_API).done((blogs) => {
         return gulp.src('./templates/blog.ejs')
             .pipe(ejs({
                 config: globalConfig,
@@ -72,14 +77,23 @@ gulp.task('work.htm', () => {
 gulp.task('default', gulp.series('clean', gulp.parallel('index.htm', 'photos.htm', 'blog.htm', 'work.htm', 'css')));
 
 gulp.task('deploy', () => {
+    const environment = process.env.NODE_ENV || 'development';
     const src = options.build.endsWith('/*') ? options.build : `${options.build}/*`;
-
-    const conn = ftp.create({
-        host: options.ftp.server.host,
-        user: options.ftp.server.user,
-        password: options.ftp.server.password
-    });
-
-    return gulp.src(src)
-        .pipe(conn.dest(options.ftp.server.remote));
+    switch (environment) {
+    case 'development':
+        return gulp.src(src)
+            .pipe(gulp.dest('/www/cieclarke.com'));
+    case 'stage':
+        return gulp.src(src)
+            .pipe(gulp.dest('/www/cieclarke.com'));
+    case 'production':
+        return gulp.src(src)
+            .pipe(ftp.create({
+                host: process.env.FTP_HOST,
+                user: process.env.FTP_USER,
+                password: process.env.FTP_PASSWORD
+            }).dest(process.env.FTP_REMOTE_CIECLARKE));
+    default:
+        return null;
+    }
 });
