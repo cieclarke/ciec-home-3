@@ -132,7 +132,7 @@ nav > div {
   text-decoration: underline;
 }
 
-@media screen and (min-width: 320px) {
+//@media screen and (min-width: 320px) {
   nav a {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -140,7 +140,13 @@ nav > div {
     font-weight: 200;
     display: block;
   }
-}
+
+  #photos h3, #photos dt, #photos dd {
+    font-size: 1rem;
+  }
+
+
+//}
 
 @media screen and (min-width: 768px) {
     #photos main > div {
@@ -189,14 +195,14 @@ nav > div {
 
   @media screen and (min-width: 1280px) {
 
-    main > div {
+    #photos main > div {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
       }
 
-      main > div > div {
+      #photos main > div > div {
         flex-grow: 1;
         flex: 1 1 50%;
     }
