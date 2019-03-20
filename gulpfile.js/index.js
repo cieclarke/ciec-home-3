@@ -2,7 +2,6 @@ const dotenv = require('dotenv');
 const ejs = require('gulp-ejs');
 const rename = require('gulp-rename');
 const clean = require('gulp-clean');
-const chmod = require('gulp-chmod');
 const gulp = require('gulp');
 const ftp = require('vinyl-ftp');
 const sass = require('gulp-sass');
@@ -11,12 +10,15 @@ const flickr = require('./../lib/flickr');
 const tumblr = require('./../lib/tumblr');
 const options = require('./../options.json');
 
+const buildFolderName = 'dist';
+const siteFilesFolder = `./${buildFolderName}`;
+
 if (process.env.NODE_ENV !== 'production') {
     dotenv.load();
 }
 
 gulp.task('clean', () => {
-    return gulp.src('dist', { read: false, allowEmpty: true })
+    return gulp.src(buildFolderName, { read: false, allowEmpty: true })
         .pipe(clean());
 });
 
@@ -34,8 +36,7 @@ gulp.task('photos.htm', () => {
                 images: photos
             }))
             .pipe(rename('photos.htm'))
-            .pipe(chmod(0o777))
-            .pipe(gulp.dest('./dist'));
+            .pipe(gulp.dest(siteFilesFolder));
     })
     ]);
 });
@@ -45,9 +46,8 @@ gulp.task('index.htm', () => {
         .pipe(ejs({
             config: globalConfig
         }))
-        .pipe(chmod(0o777))
         .pipe(rename('index.htm'))
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest(siteFilesFolder));
 });
 
 gulp.task('blog.htm', () => {
@@ -58,8 +58,7 @@ gulp.task('blog.htm', () => {
                 items: blogs
             }))
             .pipe(rename('blog.htm'))
-            .pipe(chmod(0o777))
-            .pipe(gulp.dest('./dist'));
+            .pipe(gulp.dest(siteFilesFolder));
     })
     ]);
 });
@@ -69,30 +68,26 @@ gulp.task('work.htm', () => {
         .pipe(ejs({
             config: globalConfig
         }))
-        .pipe(chmod(0o777))
         .pipe(rename('work.htm'))
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest(siteFilesFolder));
 });
 
 gulp.task('default', gulp.series('clean', gulp.parallel('index.htm', 'photos.htm', 'blog.htm', 'work.htm', 'css')));
 
 gulp.task('deploy', () => {
-    const environment = process.env.NODE_ENV || 'development';
-    const src = options.build.endsWith('/*') ? options.build : `${options.build}/*`;
-    switch (environment) {
-    case 'development':
+    const deployType = process.env.DEPLOYMENT_TYPE || 'NONE';
+    const src = siteFilesFolder.endsWith('/*') ? siteFilesFolder : `${siteFilesFolder}/*`;
+    switch (deployType) {
+    case 'FOLDER':
         return gulp.src(src)
-            .pipe(gulp.dest('/www/cieclarke.com'));
-    case 'stage':
-        return gulp.src(src)
-            .pipe(gulp.dest('/www/cieclarke.com'));
-    case 'production':
+            .pipe(gulp.dest(process.env.DEPLOYMENT_FOLDER));
+    case 'FTP':
         return gulp.src(src)
             .pipe(ftp.create({
                 host: process.env.FTP_HOST,
                 user: process.env.FTP_USER,
                 password: process.env.FTP_PASSWORD
-            }).dest(process.env.FTP_REMOTE_CIECLARKE));
+            }).dest(process.env.DEPLOYMENT_FOLDER));
     default:
         return null;
     }
