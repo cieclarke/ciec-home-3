@@ -25,7 +25,6 @@
   "dependencies": {
     "dotenv": "^6.2.0",
     "gulp": "^4.0.0",
-    "gulp-chmod": "^2.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-ejs": "^3.3.0",
     "gulp-rename": "^1.4.0",
