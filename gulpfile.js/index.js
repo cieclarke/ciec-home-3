@@ -12,6 +12,9 @@ const tumblr = require('./../lib/tumblr');
 const buildFolderName = 'dist';
 const siteFilesFolder = `./${buildFolderName}`;
 
+const buildFolderName = 'dist';
+const siteFilesFolder = `./${buildFolderName}`;
+
 if (process.env.NODE_ENV !== 'production') {
     dotenv.load();
 }
