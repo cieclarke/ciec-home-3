@@ -1,3 +1,18 @@
 {
-    "title": "cieclarke.com"
+    "title": "cieclarke.com",
+    "pages": {
+        "home":
+        {
+
+        },
+        "photos": {
+
+        },
+        "work": {
+            "source-code-link":""
+        },
+        "blog":{
+
+        }
+    }
 }

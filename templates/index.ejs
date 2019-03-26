@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title><%= config.title %> | Home</title>
+    <title><%= config.title %> <%= config.subtitle %></title>
     </head>
     <link rel="stylesheet" href="main.css" />
     <body id="home">
-    <% include navigation.ejs %>
+    <%- include('navigation.ejs'); %>
         <h1>What is this website?</h1>
         <p>
             This is the website and online home of Chris Clarke.
         </p>
     <body>
-    <% include footer.ejs %>
+    <%- include('footer.ejs'); %>
 <html>

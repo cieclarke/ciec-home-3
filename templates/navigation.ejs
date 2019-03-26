@@ -1,7 +1,7 @@
 <nav>
     <div>
         <div>
-            <a href="/index.htm">Home</a>
+            <a href="/index.htm">Home <%= config.navigation === undefined ? 'a' : config.navigation.p %></a>
         </div>
         <div>
             <a href="/photos.htm">Photos</a>

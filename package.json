@@ -7,7 +7,8 @@
     "url": "https://github.com/cieclarke/ciec-home-3"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "node ./lib/build/main.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,22 +18,15 @@
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "html-webpack-plugin": "^3.2.0",
-    "mocha": "^5.2.0",
-    "webpack": "^4.26.0",
-    "webpack-cli": "^3.1.2"
+    "mocha": "^5.2.0"
   },
   "dependencies": {
     "dotenv": "^6.2.0",
-    "gulp": "^4.0.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-ejs": "^3.3.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.2",
-    "gulp-util": "^3.0.8",
+    "ejs": "^2.6.1",
     "lodash": "^4.17.11",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
-    "vinyl-ftp": "^0.6.1"
+    "vinyl-ftp": "^0.6.1",
+    "node-sass": "^4.11.0"
   }
 }
