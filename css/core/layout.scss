@@ -1,0 +1,196 @@
+body {
+    background: nth($color-backup-list, 4);
+}
+
+h1 {
+    font-size: 3em;
+    margin: 0;
+    color: nth($color-secondary-list, 1);
+    padding-top:1rem;
+    padding-bottom: 1rem;
+}
+h2 {
+    font-size: 2em;
+    margin: 0;
+    background-color: nth($color-secondary-list, 4);
+    color: nth($color-secondary-list, 1);
+    padding-top:1rem;
+    padding-bottom: 1rem;
+}
+
+h3 {
+    font-size: 10em;
+    margin: 0;
+    background-color: nth($color-secondary-list, 4);
+    color: nth($color-secondary-list, 1);
+    padding-top: 1rem;
+    padding-bottom: 10rem;
+}
+
+a {
+    text-decoration: none;
+    color: nth($color-secondary-list, 1);
+}
+
+p {
+    color: nth($color-secondary-list, 1);
+}
+
+ul {
+    padding :0px;
+    margin:0px;
+}
+
+dl {
+    display: grid;
+    grid-template-columns: max-content auto;
+    background-color: nth($color-backup-list, 3);
+    margin:0px;
+  }
+  
+  dt {
+    grid-column-start: 1;
+    color: nth($color-secondary-list, 1);
+    font-weight: bold;
+    font-size:3rem;
+  }
+  
+  dd {
+    grid-column-start: 2;
+    color: nth($color-secondary-list, 1);
+    font-size:3rem;
+  }
+
+nav > div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  nav > div > div {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav a {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    font-size: 200%;
+    font-weight: bold;
+    display: block;
+  }
+
+  @each $current-color in $color-primary-list {
+    $i: index($color-primary-list, $current-color);
+    nav > div >  div:nth-child(#{$i}) > a {
+        background-color: $current-color;
+    }
+  }
+
+  #home h1 {
+    background-color: nth($color-primary-list, 1);
+  }
+
+  #photos h1 {
+    background-color: nth($color-primary-list, 2);
+  }
+
+  #work h1 {
+    background-color: nth($color-primary-list, 3);
+  }
+
+  #blog h1 {
+    background-color: nth($color-primary-list, 4);
+  }
+
+#blog main > div > div {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1rem solid nth($color-backup-list, 2);
+}
+
+#blog main > div > div a {
+  font-size: 200%;
+  display: block;
+}
+
+#work main a {
+  font-size: 200%;
+  display: block;
+  text-decoration: underline;
+}
+
+//@media screen and (min-width: 320px) {
+  nav a {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-size: 150%;
+    font-weight: 200;
+    display: block;
+  }
+
+  #photos h3, #photos dt, #photos dd {
+    font-size: 1rem;
+  }
+
+
+//}
+
+@media screen and (min-width: 768px) {
+    #photos main > div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      #photos main > div > div {
+        flex-grow: 1;
+        flex: 1 1 100%;
+    }
+
+    nav a {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      font-size: 400%;
+      font-weight: bold;
+      display: block;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+
+    #photos main > div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      #photos main > div > div {
+        flex-grow: 1;
+        flex: 1 1 100%;
+    }
+    
+    nav a {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      font-size: 500%;
+      font-weight: bold;
+      display: block;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+
+    #photos main > div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      #photos main > div > div {
+        flex-grow: 1;
+        flex: 1 1 50%;
+    }
+  }
