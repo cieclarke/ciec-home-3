@@ -76,7 +76,7 @@ typings/
 .fusebox/
 
 # vs code env 
-.vscode/settings.json
+.vscode/*.json
 
 # build folder
 dist
