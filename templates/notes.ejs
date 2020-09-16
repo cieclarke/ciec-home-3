@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title><%= config.title %> | Home</title>
+    <title><%= config.title %> <%= config.subtitle %></title>
     </head>
     <link rel="stylesheet" href="main.css" />
-    <body id="blog">
+    <body id="notes">
     <% include navigation.ejs %>
     <main>
-        <h1>Tumblr & links</h1>
+        <h1>Articles of technical interest, humour and reference</h1>
         <% if(items.response.posts.length <= 0) { %>
             <p>No posts made available right now</p>
         <% } else { %>
@@ -17,7 +17,7 @@
                 <% switch(items.response.posts[i].type) { 
                     case 'link':
                 %>
-                <%- include('blog.link.ejs', {post: items.response.posts[i]}) %>
+                <%- include('notes.link.ejs', {post: items.response.posts[i]}) %>
                 <%
                     break;
                     default:                

@@ -103,19 +103,23 @@ nav > div {
     background-color: nth($color-primary-list, 3);
   }
 
-  #blog h1 {
+  #notes h1 {
     background-color: nth($color-primary-list, 4);
   }
 
-#blog main > div > div {
+#notes main > div > div {
   padding-top: 2rem;
   padding-bottom: 2rem;
   border-bottom: 1rem solid nth($color-backup-list, 2);
 }
 
-#blog main > div > div a {
+#notes main > div > div a {
   font-size: 200%;
   display: block;
+}
+
+#notes h1 {
+  font-size: 1.5em;
 }
 
 #work main > div {
