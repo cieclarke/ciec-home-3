@@ -7,11 +7,20 @@
     <body id="photos">
         <% include navigation.ejs %>
         <main>
-            <h1>Photos</h1>
+            <% if(tags !== undefined) { %>
+            <div id="tags">
+            <div <% if(selectedTag == 'all') { %>id="selected"<% } %>><a href="photos.htm">all</a></div>
+            <% for(var i=0; i < tags.length; i++) { %>
+                <div <% if(selectedTag == tags[i]) { %>id="selected"<% } %>><a href="<%= tags[i] %>.htm"><%= tags[i] %></a></div>
+            <% } %>
+            </div>
+            <% } else { %>
+            <h1>All photos from albums</h1>
+            <% } %>
             <% if(images.length <= 0) { %>
             <p>No public photos made available right now</p>
             <% } else { %>
-            <div>
+            <div id="images">
             <% for(var i=0; i < images.length; i++) { %>
                 <div>
                     <h3><%= images[i].title %></h3>

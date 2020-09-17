@@ -107,6 +107,28 @@ nav > div {
     background-color: nth($color-primary-list, 4);
   }
 
+  #photos main > #tags {
+    background-color: nth($color-primary-list, 2);
+  }
+
+  #photos main > #tags {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #photos main > #tags > div {
+    width: 100%;
+    text-align: center;
+  }
+
+  #photos main > #tags > div {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 100%;
+    font-weight: bold;
+    display: block;
+  }
+
 #notes main > div > div {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -145,6 +167,10 @@ nav > div {
   display: block;
 }
 
+#selected {
+  text-decoration: underline;
+}
+
 //@media screen and (min-width: 320px) {
   nav a {
     padding-top: 2rem;
@@ -162,14 +188,14 @@ nav > div {
 //}
 
 @media screen and (min-width: 768px) {
-    #photos main > div {
+    #photos main > #images {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
       }
 
-      #photos main > div > div {
+      #photos main > #images > div {
         flex-grow: 1;
         flex: 1 1 100%;
     }
@@ -185,14 +211,14 @@ nav > div {
 
   @media screen and (min-width: 1024px) {
 
-    #photos main > div {
+    #photos main > #images {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
       }
 
-      #photos main > div > div {
+      #photos main > #images > div {
         flex-grow: 1;
         flex: 1 1 100%;
     }
@@ -208,14 +234,14 @@ nav > div {
 
   @media screen and (min-width: 1280px) {
 
-    #photos main > div {
+    #photos main > #images {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
       }
 
-      #photos main > div > div {
+      #photos main > #images > div {
         flex-grow: 1;
         flex: 1 1 50%;
     }
