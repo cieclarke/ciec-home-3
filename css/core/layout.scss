@@ -40,6 +40,7 @@ span {
 
 p {
     color: nth($color-secondary-list, 1);
+    padding-left: 1rem;
 }
 
 ul {
@@ -153,7 +154,7 @@ nav > div {
   display: block;
 }
 
-#notes h1, #home h1 {
+#notes h1, #home h1, #work h1 {
   font-size: 1.5em;
 }
 

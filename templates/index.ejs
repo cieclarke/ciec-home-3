@@ -3,16 +3,22 @@
     <head>
     <title><%= config.title %> <%= config.subtitle %></title>
     </head>
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="main.css?s" />
     <body id="home">
     <%- include('navigation.ejs'); %>
     <main>
-        <h1>This is the website and online home of Chris Clarke.</h1>
+        <h1>This is the website of Chris Clarke.</h1>
         <div>
-            <div>
-                
+                <p>
+                The website is using APIs from Flickr and Tumblr to manage the content.
+                Using third party API's for website content is a simple way to manage content in a website.
+                The photos from Flickr are taken by me.
+                </p>
+                <p>
+                Developed with NodeJS, the website is built by collecting all the content and then publishing flat html files.
+                A systemctl service on rasbperry pi server regulary pulls the master branch from a GIT repository and runs this build and deploy.
+                </p>
             </div>
-        </div>
     </main>
     <body>
     <%- include('footer.ejs'); %>
