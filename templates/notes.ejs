@@ -2,36 +2,41 @@
 <html>
     <head>
     <title><%= config.title %> <%= config.subtitle %></title>
+    <%- include('html_head.ejs'); %>
     </head>
-    <link rel="stylesheet" href="main.css" />
     <body id="notes">
-    <% include navigation.ejs %>
-    <main>
-        <h1>Collected articles and links</h1>
-        <% if(items.response.posts.length <= 0) { %>
-            <p>No posts made available right now</p>
-        <% } else { %>
+    <div>
+        <div></div>
         <div>
-        <% for(var i=0; i < items.response.posts.length; i++) { %>
-            <div>
-                <% switch(items.response.posts[i].type) { 
-                    case 'link':
-                %>
-                <%- include('notes.link.ejs', {post: items.response.posts[i]}) %>
-                <%
-                    break;
-                    default:                
-                %>
-                    <div>default</div>
-                <%
-                    break;
-                %>
+            <% include navigation.ejs %>
+            <main>
+                <h1>Collected articles and links</h1>
+                <% if(items.response.posts.length <= 0) { %>
+                    <p>No posts made available right now</p>
+                <% } else { %>
+                <div>
+                <% for(var i=0; i < items.response.posts.length; i++) { %>
+                    <div>
+                        <% switch(items.response.posts[i].type) { 
+                            case 'link':
+                        %>
+                        <%- include('notes.link.ejs', {post: items.response.posts[i]}) %>
+                        <%
+                            break;
+                            default:                
+                        %>
+                            <div>default</div>
+                        <%
+                            break;
+                        %>
+                        <% } %>
+                    </div>
                 <% } %>
-            </div>
-        <% } %>
+                </div>
+                <% } %>
+            </main>
         </div>
-        <% } %>
-    </main>
+    </div>
     <body>
     <% include footer.ejs %>
 <html>
